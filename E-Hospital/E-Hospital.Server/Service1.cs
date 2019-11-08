@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace E_Hospital.Service
+namespace E_Hospital.Server
 {
-    // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class Service1 : IService1
     {
         public string GetData(int value)
