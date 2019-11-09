@@ -12,5 +12,7 @@ namespace E_Hospital.DAL.Repositories.Abstraction
 
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate,
             params Expression<Func<TEntity, object>>[] includes);
+
+        TEntity Single(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
     }
 }
