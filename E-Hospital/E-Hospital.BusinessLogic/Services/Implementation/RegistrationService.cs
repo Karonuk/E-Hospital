@@ -26,57 +26,57 @@ namespace E_Hospital.BLL.Services.Implementation
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
         }            
 
-        public bool RegisterDoctor(DoctorDto _doctor)
+        public bool RegisterDoctor(DoctorDto doctor)
         {            
-            if (_userRepository.Single(x => x.Login == _doctor.Login) != null)
+            if (_userRepository.Single(x => x.Login == doctor.Login) != null)
                 return false;
 
             string salt = EncryptionUtil.GenerateSalt();
-            string passwd = EncryptionUtil.HashPassword(_doctor.Password, salt);
+            string passwd = EncryptionUtil.HashPassword(doctor.Password, salt);
             var user = new User()
             {
-                LastName = _doctor.LastName,
-                FirstName = _doctor.FirstName,
-                Login = _doctor.Login,
+                LastName = doctor.LastName,
+                FirstName = doctor.FirstName,
+                Login = doctor.Login,
                 Password = passwd,
                 Salt = salt,
-                PhoneNumber = _doctor.PhoneNumber,
-                Role = _roleRepository.Single(x => x.Name == _doctor.Role.ToString()),
+                PhoneNumber = doctor.PhoneNumber,
+                Role = _roleRepository.Single(x => x.Name == doctor.Role.ToString()),
             };
-            var doctor = new Doctor()
+            var newDoctor = new Doctor()
             {
-                Specialization = _specializationRepository.Single(x => x.Name == _doctor.SpecializationName),
+                Specialization = _specializationRepository.Single(x => x.Name == doctor.SpecializationName),
                 User = user,
             };
             _userRepository.Add(user);
-            _doctorRepository.Add(doctor);
+            _doctorRepository.Add(newDoctor);
             return true;
         }
 
-        public bool RegisterPatient(PatientDto _patient)
+        public bool RegisterPatient(PatientDto patient)
         {
-            if (_userRepository.Single(x => x.Login == _patient.Login) != null)
+            if (_userRepository.Single(x => x.Login == patient.Login) != null)
                 return false;
 
             string salt = EncryptionUtil.GenerateSalt();
-            string passwd = EncryptionUtil.HashPassword(_patient.Password, salt);
+            string passwd = EncryptionUtil.HashPassword(patient.Password, salt);
             var user = new User()
             {
-                LastName = _patient.LastName,
-                FirstName = _patient.FirstName,
-                Login = _patient.Login,
+                LastName = patient.LastName,
+                FirstName = patient.FirstName,
+                Login = patient.Login,
                 Password = passwd,
                 Salt = salt,
-                PhoneNumber = _patient.PhoneNumber,
-                Role = _roleRepository.Single(x => x.Name == _patient.Role.ToString()),
+                PhoneNumber = patient.PhoneNumber,
+                Role = _roleRepository.Single(x => x.Name == patient.Role.ToString()),
             };
-            var patient = new Patient()
+            var newPatient = new Patient()
             {
-                MedicalCard = _patient.MedicalCard,
+                MedicalCard = patient.MedicalCard,
                 User = user,
             };
             _userRepository.Add(user);
-            _patientRepository.Add(patient);
+            _patientRepository.Add(newPatient);
             return true;
         }
 
