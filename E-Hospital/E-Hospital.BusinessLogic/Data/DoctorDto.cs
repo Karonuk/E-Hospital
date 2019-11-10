@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Data
 {
+    [DataContract]
     public class DoctorDto : UserDto
     {
-        [DataMember] public int SpecializationId { get; set; }
-        [DataMember] public SpecializationDto Specialization { get; set; }
+        
+        [DataMember] public string SpecializationName { get; set; }
     }
 }

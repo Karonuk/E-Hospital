@@ -28,7 +28,7 @@ namespace E_Hospital.BLL.Services.Implementation
 
         public bool RegisterDoctor(DoctorDto doctor)
         {            
-            if (_userRepository.Single(x => x.Login == doctor.Login) == null)
+            if (_userRepository.Single(x => x.Login == doctor.Login) != null)
                 return false;
 
             string salt = EncryptionUtil.GenerateSalt();
@@ -43,19 +43,19 @@ namespace E_Hospital.BLL.Services.Implementation
                 PhoneNumber = doctor.PhoneNumber,
                 Role = _roleRepository.Single(x => x.Name == doctor.Role.ToString()),
             };
-            var Doctor = new Doctor()
+            var _doctor = new Doctor()
             {
-                Specialization = _specializationRepository.Single(x => x.Name == doctor.Specialization.Name),
+                Specialization = _specializationRepository.Single(x => x.Name == doctor.SpecializationName),
                 User = user,
             };
             _userRepository.Add(user);
-            _doctorRepository.Add(Doctor);
+            _doctorRepository.Add(_doctor);
             return true;
         }
 
         public bool RegisterPatient(PatientDto patient)
         {
-            if (_userRepository.Single(x => x.Login == patient.Login) == null)
+            if (_userRepository.Single(x => x.Login == patient.Login) != null)
                 return false;
 
             string salt = EncryptionUtil.GenerateSalt();
@@ -70,13 +70,13 @@ namespace E_Hospital.BLL.Services.Implementation
                 PhoneNumber = patient.PhoneNumber,
                 Role = _roleRepository.Single(x => x.Name == patient.Role.ToString()),
             };
-            var Patient = new Patient()
+            var _patient = new Patient()
             {
                 MedicalCard = patient.MedicalCard,
                 User = user,
             };
             _userRepository.Add(user);
-            _patientRepository.Add(Patient);
+            _patientRepository.Add(_patient);
             return true;
         }
 

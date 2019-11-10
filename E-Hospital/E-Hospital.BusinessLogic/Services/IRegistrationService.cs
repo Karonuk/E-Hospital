@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace E_Hospital.BLL.Services
 {
     [ServiceContract]
-    interface IRegistrationService
+    public interface IRegistrationService
     {
         [OperationContract] bool RegisterDoctor(DoctorDto doctor);
         [OperationContract] bool RegisterPatient(PatientDto patient);
