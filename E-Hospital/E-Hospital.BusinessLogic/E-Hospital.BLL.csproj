@@ -71,6 +71,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E-Hospital.DAL\E-Hospital.DAL.csproj">
+      <Project>{56A701EA-AA68-4861-9FFC-FF400C71FCC9}</Project>
+      <Name>E-Hospital.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

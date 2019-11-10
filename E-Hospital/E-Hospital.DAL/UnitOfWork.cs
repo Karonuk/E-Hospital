@@ -5,6 +5,7 @@ namespace E_Hospital.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
+
         public IRepository<T> GetRepository<T>() where T : class
         {
             return new EfRepository<T>(new EfContext());
