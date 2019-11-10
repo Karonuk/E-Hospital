@@ -68,12 +68,6 @@
     <Compile Include="Utils\EncryptionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\E-Hospital.DAL\E-Hospital.DAL.csproj">
-      <Project>{23d619c0-cb1f-4b05-9fd7-ca9927834e37}</Project>
-      <Name>E-Hospital.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
