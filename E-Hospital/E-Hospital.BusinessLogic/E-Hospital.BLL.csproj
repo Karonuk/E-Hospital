@@ -60,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\MappingProfiles\MappingProfile.cs" />
+    <Compile Include="Data\DoctorDto.cs" />
+    <Compile Include="Data\PatientDto.cs" />
+    <Compile Include="Data\SpecializationDto.cs" />
     <Compile Include="Data\UserDto.cs" />
     <Compile Include="Data\UserRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

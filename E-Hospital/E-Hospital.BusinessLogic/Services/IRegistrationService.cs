@@ -11,6 +11,7 @@ namespace E_Hospital.BLL.Services
     [ServiceContract]
     interface IRegistrationService
     {
-        [OperationContract] bool Register(UserDto userDto);
+        [OperationContract] bool RegisterDoctor(DoctorDto doctor);
+        [OperationContract] bool RegisterPatient(PatientDto patient);
     }
 }
