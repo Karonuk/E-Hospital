@@ -28,7 +28,6 @@ namespace E_Hospital.BLL.Services.Implementation
                 return null;
 
             var pswHash = EncryptionUtil.HashPassword(password, user.Salt);
-
             return pswHash != user.Password ? null : _mapper.Map<UserDto>(user);
         }
 
