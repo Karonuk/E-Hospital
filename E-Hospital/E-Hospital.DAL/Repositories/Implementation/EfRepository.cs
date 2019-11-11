@@ -9,7 +9,7 @@ namespace E_Hospital.DAL.Repositories.Implementation
 {
     public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public EfRepository(EfContext context)
+        public EfRepository(DbContext context)
         {
             _context = context;
         }
@@ -54,6 +54,6 @@ namespace E_Hospital.DAL.Repositories.Implementation
             _context.SaveChanges();
         }
 
-        private readonly EfContext _context;
+        private readonly DbContext _context;
     }
 }

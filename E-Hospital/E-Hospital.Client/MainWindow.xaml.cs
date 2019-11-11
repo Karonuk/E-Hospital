@@ -23,6 +23,19 @@ namespace E_Hospital.Client
         public MainWindow()
         {
             InitializeComponent();
+
+            var regService = new RegistrationService.RegistrationServiceClient();
+
+            regService.RegisterPatient(new RegistrationService.PatientDto
+            {
+                Login = "1",
+                Password = "1",
+                FirstName = "1",
+                LastName = "1",
+                MedicalCard = "11",
+                PhoneNumber = "111",
+                Role = RegistrationService.UserRoles.Patient
+            });
         }
     }
 }
