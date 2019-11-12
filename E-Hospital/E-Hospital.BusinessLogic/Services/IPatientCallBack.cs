@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services
 {
-    public interface IPatientCallBack
+    public interface IPatientCallback
     {
         [OperationContract] void UpdateRequestState(VisitRequestDto visitRequest);
     }

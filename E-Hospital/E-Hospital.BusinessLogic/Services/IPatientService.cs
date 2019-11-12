@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services
 {
-    [ServiceContract (CallbackContract = typeof(IPatientCallBack))]
+    [ServiceContract (CallbackContract = typeof(IPatientCallback))]
     public interface IPatientService
     {
         [OperationContract] IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto currentPatient);
