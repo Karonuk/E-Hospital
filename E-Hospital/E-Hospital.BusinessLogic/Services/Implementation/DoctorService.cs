@@ -19,13 +19,22 @@ namespace E_Hospital.BLL.Services.Implementation
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
         {
             var visitRequests = _requestsRepository.Get(d =>
-                    d.DoctorId == doctor.Id 
-                    && d.IsApproved 
-                    && d.VisitTime.DayOfYear == DateTime.Today.DayOfYear 
+                    d.DoctorId == doctor.Id
+                    && d.IsApproved == true
+                    && d.VisitTime.DayOfYear == DateTime.Today.DayOfYear
                     && d.VisitTime.Year == DateTime.Today.Year,
                 cfg => cfg.Doctor, cfg => cfg.Patient);
 
             return _mapper.Map<VisitRequestDto[]>(visitRequests);
+        }
+
+        public IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor)
+        {
+            var pendingRequests = _requestsRepository.Get(d => d.DoctorId == doctor.Id && d.IsApproved == null,
+                cfg => cfg.Doctor, cfg => cfg.Patient);
+
+            // TODO: subscribe doctor on receiving new requests.  
+            return _mapper.Map<VisitRequestDto[]>(pendingRequests);
         }
 
         private readonly IRepository<VisitRequest> _requestsRepository;

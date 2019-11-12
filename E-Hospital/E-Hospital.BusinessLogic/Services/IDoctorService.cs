@@ -9,5 +9,8 @@ namespace E_Hospital.BLL.Services
     {
         [OperationContract]
         IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor);
+
+        [OperationContract]
+        IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor);
     }
 }
