@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace E_Hospital.BLL.Services.Implementation
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
-    class UserService:IDoctorService,IPatientService
+    public class UserService:IDoctorService,IPatientService
     {
         public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -21,8 +21,9 @@ namespace E_Hospital.BLL.Services.Implementation
             _mapper = mapper;
             _activeDoctors = new Dictionary<DoctorDto, IDoctorCallback>();
             _visitRequestRepository = unitOfWork.GetRepository<VisitRequest>();
+            _activePatients = new Dictionary<PatientDto, IPatientCallback>();
         }
-        //Doctor service
+        #region Doctor
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
         {
             var visitRequests = _requestsRepository.Get(d =>
@@ -56,6 +57,10 @@ namespace E_Hospital.BLL.Services.Implementation
             request.IsApproved = isApproved;
 
             _requestsRepository.Update(request);
+
+            var selectedPatient = _activePatients.FirstOrDefault(x => x.Key.Id == request.Doctor.Id);
+            if (selectedPatient.Key != null)
+                selectedPatient.Value.UpdateRequestState(_mapper.Map<VisitRequestDto>(request));
         }
 
         public void ReceiveVisitRequest(DoctorDto doctor, VisitRequestDto visitRequest)
@@ -73,23 +78,41 @@ namespace E_Hospital.BLL.Services.Implementation
             if (foundDoctor.Key != null)
                 _activeDoctors.Remove(foundDoctor.Key);
         }
-
-        //Patient
+        #endregion
+        #region Patient
         public IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto patient)
         {
             var visitRequests = _visitRequestRepository.Get(x => x.PatientId == patient.Id, x => x.Patient, x => x.Doctor);
-
             return _mapper.Map<VisitRequestDto[]>(visitRequests).AsEnumerable();
         }
 
         public void SendVisitRequest(VisitRequestDto visitRequest)
         {
             _visitRequestRepository.Add(_mapper.Map<VisitRequest>(visitRequest));
+
+            var selectedDoctor = _activePatients.FirstOrDefault(x => x.Key.Id == visitRequest.Doctor.Id);
+            if (selectedDoctor.Key != null)
+            {
+                selectedDoctor.Value.UpdateRequestState(visitRequest);
+            }
         }
 
+        public void LogIn(PatientDto patient)
+        {
+            _activePatients.Add(patient, OperationContext.Current.GetCallbackChannel<IPatientCallback>());
+        }
+
+        public void LogOut(PatientDto patient)
+        {
+            var foundPatient = _activePatients.FirstOrDefault(x => x.Key.Id == patient.Id);
+            if (foundPatient.Key != null)            
+                _activePatients.Remove(foundPatient.Key);           
+        }
+        #endregion 
         private readonly IRepository<VisitRequest> _requestsRepository;
         private readonly IMapper _mapper;
         private readonly Dictionary<DoctorDto, IDoctorCallback> _activeDoctors;
+        private readonly Dictionary<PatientDto, IPatientCallback> _activePatients;
         private readonly IRepository<VisitRequest> _visitRequestRepository;
     }
 }

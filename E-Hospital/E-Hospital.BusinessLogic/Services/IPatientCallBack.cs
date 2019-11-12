@@ -10,6 +10,6 @@ namespace E_Hospital.BLL.Services
 {
     public interface IPatientCallback
     {
-        [OperationContract] void UpdateRequestState(VisitRequestDto visitRequest);
+        [OperationContract(IsOneWay =true)] void UpdateRequestState(VisitRequestDto visitRequest);
     }
 }

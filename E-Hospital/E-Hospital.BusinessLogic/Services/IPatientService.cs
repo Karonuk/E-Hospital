@@ -13,5 +13,7 @@ namespace E_Hospital.BLL.Services
     {
         [OperationContract] IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto currentPatient);
         [OperationContract (IsOneWay =true)] void SendVisitRequest(VisitRequestDto visitRequest);
+        [OperationContract(IsOneWay = true)] void LogIn(PatientDto patient);
+        [OperationContract(IsOneWay = true)] void LogOut(PatientDto patient);
     }
 }
