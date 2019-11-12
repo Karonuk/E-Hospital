@@ -4,7 +4,7 @@ using E_Hospital.BLL.Data;
 
 namespace E_Hospital.BLL.Services
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IDoctorCallback))]
     public interface IDoctorService
     {
         [OperationContract]
@@ -15,5 +15,11 @@ namespace E_Hospital.BLL.Services
 
         [OperationContract(IsOneWay = true)]
         void ChangeRequestState(int visitRequestId, bool isApproved);
+
+        [OperationContract(IsOneWay = true)]
+        void ReceiveVisitRequest(DoctorDto doctor, VisitRequestDto visitRequest);
+
+        [OperationContract(IsOneWay = true)]
+        void Logout(DoctorDto doctor);
     }
 }
