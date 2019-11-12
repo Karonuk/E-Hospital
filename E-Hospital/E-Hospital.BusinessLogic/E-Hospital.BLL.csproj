@@ -72,7 +72,10 @@
     <Compile Include="Services\IDoctorService.cs" />
     <Compile Include="Services\Implementation\AuthService.cs" />
     <Compile Include="Services\Implementation\DoctorService.cs" />
+    <Compile Include="Services\Implementation\PatientService.cs" />
     <Compile Include="Services\Implementation\RegistrationService.cs" />
+    <Compile Include="Services\IPatientCallBack.cs" />
+    <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IRegistrationService.cs" />
     <Compile Include="Utils\EncryptionUtil.cs" />
   </ItemGroup>
