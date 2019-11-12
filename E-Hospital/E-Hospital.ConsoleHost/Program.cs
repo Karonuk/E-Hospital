@@ -10,11 +10,12 @@ namespace E_Hospital.ConsoleHost
     {
         static void Main(string[] args)
         {
-            var authHost = new ServiceHost(typeof(AuthService));
+            var authHost         = new ServiceHost(typeof(AuthService));
             var registrationHost = new ServiceHost(typeof(RegistrationService));
 
             authHost.AddDependencyInjectionBehavior<AuthService>(ContainerConfiguration.ConfigureContainer());
-            registrationHost.AddDependencyInjectionBehavior<RegistrationService>(ContainerConfiguration.ConfigureContainer());
+            registrationHost.AddDependencyInjectionBehavior<RegistrationService>(ContainerConfiguration
+                .ConfigureContainer());
 
             authHost.Open();
             registrationHost.Open();

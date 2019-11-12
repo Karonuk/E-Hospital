@@ -15,7 +15,7 @@ namespace E_Hospital.BLL.Services.Implementation
             _usersRepository = unitOfWork.GetRepository<User>();
             _mapper          = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
         }
-        
+
         public UserDto Login(string login, string password)
         {
             var user = _usersRepository.Single(u => u.Login == login, u => u.Role);

@@ -12,34 +12,34 @@ namespace E_Hospital.BLL.Services.Implementation
     {
         public RegistrationService(IUnitOfWork unitOfWork)
         {
-            _userRepository = unitOfWork.GetRepository<User>();
-            _roleRepository = unitOfWork.GetRepository<Role>();
-            _doctorRepository = unitOfWork.GetRepository<Doctor>();
-            _patientRepository = unitOfWork.GetRepository<Patient>();
+            _userRepository           = unitOfWork.GetRepository<User>();
+            _roleRepository           = unitOfWork.GetRepository<Role>();
+            _doctorRepository         = unitOfWork.GetRepository<Doctor>();
+            _patientRepository        = unitOfWork.GetRepository<Patient>();
             _specializationRepository = unitOfWork.GetRepository<Specialization>();
 
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
-        }            
+        }
 
         public bool RegisterDoctor(DoctorDto doctor)
-        {            
+        {
             if (_userRepository.Single(x => x.Login == doctor.Login) != null)
                 return false;
 
-            string salt = EncryptionUtil.GenerateSalt();
-            string passwd = EncryptionUtil.HashPassword(doctor.Password, salt);
+            var salt   = EncryptionUtil.GenerateSalt();
+            var passwd = EncryptionUtil.HashPassword(doctor.Password, salt);
 
             var user = _mapper.Map<User>(doctor);
 
             user.Password = passwd;
-            user.Salt = salt;
-            user.Role = _roleRepository.Single(x => x.Name == doctor.Role.ToString());
+            user.Salt     = salt;
+            user.Role     = _roleRepository.Single(x => x.Name == doctor.Role.ToString());
 
-            
-            var newDoctor = new Doctor()
+
+            var newDoctor = new Doctor
             {
                 Specialization = _specializationRepository.Single(x => x.Name == doctor.SpecializationName),
-                User = user,
+                User           = user
             };
 
             _userRepository.Add(user);
@@ -53,19 +53,19 @@ namespace E_Hospital.BLL.Services.Implementation
             if (_userRepository.Single(x => x.Login == patient.Login) != null)
                 return false;
 
-            string salt = EncryptionUtil.GenerateSalt();
-            string passwd = EncryptionUtil.HashPassword(patient.Password, salt);
+            var salt   = EncryptionUtil.GenerateSalt();
+            var passwd = EncryptionUtil.HashPassword(patient.Password, salt);
 
             var user = _mapper.Map<User>(patient);
 
             user.Password = passwd;
-            user.Salt = salt;
-            user.Role = _roleRepository.Single(x => x.Name == patient.Role.ToString());
+            user.Salt     = salt;
+            user.Role     = _roleRepository.Single(x => x.Name == patient.Role.ToString());
 
-            var newPatient = new Patient()
+            var newPatient = new Patient
             {
                 MedicalCard = patient.MedicalCard,
-                User = user,
+                User        = user
             };
 
             _userRepository.Add(user);
@@ -74,11 +74,11 @@ namespace E_Hospital.BLL.Services.Implementation
             return true;
         }
 
-        private readonly IRepository<Role> _roleRepository;
-        private readonly IRepository<Doctor> _doctorRepository;
+        private readonly IRepository<Role>           _roleRepository;
+        private readonly IRepository<Doctor>         _doctorRepository;
         private readonly IRepository<Specialization> _specializationRepository;
-        private readonly IRepository<Patient> _patientRepository;
-        private readonly IRepository<User> _userRepository;
-        private readonly Mapper _mapper;
+        private readonly IRepository<Patient>        _patientRepository;
+        private readonly IRepository<User>           _userRepository;
+        private readonly Mapper                      _mapper;
     }
 }
