@@ -9,11 +9,11 @@
         Title="E-Hospital" Height="450" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
-            <TextBox Controls:TextBoxHelper.Watermark="Login" Margin="0 0 0 10"></TextBox>
-            <TextBox Controls:TextBoxHelper.Watermark="Registration" Margin="0 0 0 10"></TextBox>
-            <Button Content="Log in" Style="{StaticResource AccentedSquareButtonStyle}" Margin="0 0 0 10"></Button>
-            <Button Content="Register as Doctor" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10"></Button>
-            <Button Content="Register as Patient" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10"></Button>
+            <TextBox Controls:TextBoxHelper.Watermark="Login" Margin="0 0 0 10" Name="LoginTextBox"></TextBox>
+            <PasswordBox Controls:TextBoxHelper.Watermark="Password" Margin="0 0 0 10" Name="PasswordTextBox"></PasswordBox>
+            <Button Content="Log in" Style="{StaticResource AccentedSquareButtonStyle}" Margin ="0 0 0 10" Click="LogInButton_OnClick"></Button>
+            <Button Content="Register as Doctor" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10" Click="RegisterAsDoctor_OnClick"></Button>
+            <Button Content="Register as Patient" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10" Click="RegisterAsPatient_OnClick"></Button>
                 
         </StackPanel>
         
