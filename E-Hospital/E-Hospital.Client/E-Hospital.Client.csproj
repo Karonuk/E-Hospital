@@ -74,6 +74,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Connected Services\AuthService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\RegistrationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +107,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\AuthService\E_Hospital.BLL.Data.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\E_Hospital.Client.AuthService.UserDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AuthService\service.wsdl" />
+    <None Include="Connected Services\AuthService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\RegistrationService\E_Hospital.BLL.Data.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -125,6 +143,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AuthService\" />
     <WCFMetadataStorage Include="Connected Services\RegistrationService\" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +154,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\RegistrationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AuthService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AuthService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AuthService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
