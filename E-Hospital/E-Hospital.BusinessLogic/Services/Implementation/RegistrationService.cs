@@ -10,7 +10,7 @@ namespace E_Hospital.BLL.Services.Implementation
 {
     public class RegistrationService : IRegistrationService
     {
-        public RegistrationService(IUnitOfWork unitOfWork)
+        public RegistrationService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _userRepository           = unitOfWork.GetRepository<User>();
             _roleRepository           = unitOfWork.GetRepository<Role>();
@@ -18,7 +18,7 @@ namespace E_Hospital.BLL.Services.Implementation
             _patientRepository        = unitOfWork.GetRepository<Patient>();
             _specializationRepository = unitOfWork.GetRepository<Specialization>();
 
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
+            _mapper = mapper;
         }
 
         public bool RegisterDoctor(DoctorDto doctor)
@@ -79,6 +79,6 @@ namespace E_Hospital.BLL.Services.Implementation
         private readonly IRepository<Specialization> _specializationRepository;
         private readonly IRepository<Patient>        _patientRepository;
         private readonly IRepository<User>           _userRepository;
-        private readonly Mapper                      _mapper;
+        private readonly IMapper                     _mapper;
     }
 }

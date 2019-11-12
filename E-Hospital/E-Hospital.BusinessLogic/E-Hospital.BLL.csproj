@@ -65,9 +65,12 @@
     <Compile Include="Data\SpecializationDto.cs" />
     <Compile Include="Data\UserDto.cs" />
     <Compile Include="Data\UserRoles.cs" />
+    <Compile Include="Data\VisitRequestDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IAuthService.cs" />
+    <Compile Include="Services\IDoctorService.cs" />
     <Compile Include="Services\Implementation\AuthService.cs" />
+    <Compile Include="Services\Implementation\DoctorService.cs" />
     <Compile Include="Services\Implementation\RegistrationService.cs" />
     <Compile Include="Services\IRegistrationService.cs" />
     <Compile Include="Utils\EncryptionUtil.cs" />
