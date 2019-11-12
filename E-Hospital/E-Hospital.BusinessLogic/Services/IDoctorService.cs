@@ -12,5 +12,8 @@ namespace E_Hospital.BLL.Services
 
         [OperationContract]
         IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor);
+
+        [OperationContract(IsOneWay = true)]
+        void ChangeRequestState(int visitRequestId, bool isApproved);
     }
 }

@@ -37,6 +37,15 @@ namespace E_Hospital.BLL.Services.Implementation
             return _mapper.Map<VisitRequestDto[]>(pendingRequests);
         }
 
+        public void ChangeRequestState(int visitRequestId, bool isApproved)
+        {
+            var request = _requestsRepository.Single(x => x.Id == visitRequestId);
+
+            request.IsApproved = isApproved;
+
+            _requestsRepository.Update(request);
+        }
+
         private readonly IRepository<VisitRequest> _requestsRepository;
         private readonly IMapper                   _mapper;
     }

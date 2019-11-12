@@ -6,6 +6,7 @@ namespace E_Hospital.BLL.Data
     [DataContract]
     public class VisitRequestDto
     {
+        [DataMember] public int      Id         { get; set; }
         [DataMember] public string   Comment    { get; set; }
         [DataMember] public DateTime VisitTime  { get; set; }
         [DataMember] public bool?    IsApproved { get; set; }
