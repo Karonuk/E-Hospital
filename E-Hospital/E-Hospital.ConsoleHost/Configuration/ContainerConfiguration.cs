@@ -21,6 +21,9 @@ namespace E_Hospital.ConsoleHost.Configuration
 
             builder.RegisterType<AuthService>();
             builder.RegisterType<RegistrationService>();
+            builder.RegisterType<DoctorService>();
+            builder.RegisterType<PatientService>();
+            
 
             builder.Register(ctx => { return new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()); })
                 .As<IConfigurationProvider>();
