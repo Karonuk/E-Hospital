@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using AutoMapper;
+﻿using AutoMapper;
 using E_Hospital.BLL.Data;
 using E_Hospital.DAL;
 using E_Hospital.DAL.Entities;
 using E_Hospital.DAL.Repositories.Abstraction;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services.Implementation
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
-    public class DoctorService : IDoctorService
+    class UserService:IDoctorService,IPatientService
     {
-        public DoctorService(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _requestsRepository = unitOfWork.GetRepository<VisitRequest>();
-            _mapper             = mapper;
-            _activeDoctors      = new Dictionary<DoctorDto, IDoctorCallback>();
+            _mapper = mapper;
+            _activeDoctors = new Dictionary<DoctorDto, IDoctorCallback>();
+            _visitRequestRepository = unitOfWork.GetRepository<VisitRequest>();
         }
-
+        //Doctor service
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
         {
             var visitRequests = _requestsRepository.Get(d =>
@@ -71,8 +74,22 @@ namespace E_Hospital.BLL.Services.Implementation
                 _activeDoctors.Remove(foundDoctor.Key);
         }
 
-        private readonly IRepository<VisitRequest>              _requestsRepository;
-        private readonly IMapper                                _mapper;
+        //Patient
+        public IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto patient)
+        {
+            var visitRequests = _visitRequestRepository.Get(x => x.PatientId == patient.Id, x => x.Patient, x => x.Doctor);
+
+            return _mapper.Map<VisitRequestDto[]>(visitRequests).AsEnumerable();
+        }
+
+        public void SendVisitRequest(VisitRequestDto visitRequest)
+        {
+            _visitRequestRepository.Add(_mapper.Map<VisitRequest>(visitRequest));
+        }
+
+        private readonly IRepository<VisitRequest> _requestsRepository;
+        private readonly IMapper _mapper;
         private readonly Dictionary<DoctorDto, IDoctorCallback> _activeDoctors;
+        private readonly IRepository<VisitRequest> _visitRequestRepository;
     }
 }

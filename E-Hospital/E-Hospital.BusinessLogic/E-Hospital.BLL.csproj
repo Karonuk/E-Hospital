@@ -71,9 +71,8 @@
     <Compile Include="Services\IDoctorCallback.cs" />
     <Compile Include="Services\IDoctorService.cs" />
     <Compile Include="Services\Implementation\AuthService.cs" />
-    <Compile Include="Services\Implementation\DoctorService.cs" />
-    <Compile Include="Services\Implementation\PatientService.cs" />
     <Compile Include="Services\Implementation\RegistrationService.cs" />
+    <Compile Include="Services\Implementation\UserService.cs" />
     <Compile Include="Services\IPatientCallBack.cs" />
     <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IRegistrationService.cs" />
