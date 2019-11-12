@@ -5,18 +5,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56A701EA-AA68-4861-9FFC-FF400C71FCC9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>E_Hospital.DAL</RootNamespace>
-    <AssemblyName>E-Hospital.DAL</AssemblyName>
+    <ProjectGuid>{82CD2669-D5DD-4ED4-8F85-0EF265F4B481}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>E_Hospital.ConsoleHost</RootNamespace>
+    <AssemblyName>E-Hospital.ConsoleHost</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,6 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.3.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Wcf, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Wcf.4.1.0\lib\net45\Autofac.Integration.Wcf.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -43,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,33 +61,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EFContext.cs" />
-    <Compile Include="Entities\Doctor.cs" />
-    <Compile Include="Entities\Patient.cs" />
-    <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\Specialization.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\VisitRequest.cs" />
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201911111746465_initial.cs" />
-    <Compile Include="Migrations\201911111746465_initial.designer.cs">
-      <DependentUpon>201911111746465_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Configuration\ContainerConfiguration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Abstraction\IRepository.cs" />
-    <Compile Include="Repositories\Implementation\EfRepository.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911111746465_initial.resx">
-      <DependentUpon>201911111746465_initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\E-Hospital.BusinessLogic\E-Hospital.BLL.csproj">
+      <Project>{9b99f278-7952-496e-b147-a04d063ff4bf}</Project>
+      <Name>E-Hospital.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\E-Hospital.DAL\E-Hospital.DAL.csproj">
+      <Project>{56A701EA-AA68-4861-9FFC-FF400C71FCC9}</Project>
+      <Name>E-Hospital.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

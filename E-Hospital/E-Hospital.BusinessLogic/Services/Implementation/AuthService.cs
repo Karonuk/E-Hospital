@@ -1,4 +1,3 @@
-using System;
 using AutoMapper;
 using E_Hospital.BLL.Configuration.MappingProfiles;
 using E_Hospital.BLL.Data;
@@ -11,14 +10,12 @@ namespace E_Hospital.BLL.Services.Implementation
 {
     public class AuthService : IAuthService
     {
-        public AuthService()
+        public AuthService(IUnitOfWork unitOfWork)
         {
-            var unitOfWork = new UnitOfWork();
-
             _usersRepository = unitOfWork.GetRepository<User>();
             _mapper          = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
         }
-        
+
         public UserDto Login(string login, string password)
         {
             var user = _usersRepository.Single(u => u.Login == login, u => u.Role);

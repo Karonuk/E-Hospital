@@ -13,6 +13,9 @@ namespace E_Hospital.DAL.Entities
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
+        public Doctor Doctor { get; set; }
+        public Patient Patient { get; set; }
+
         public Role Role { get; set; }
     }
 }
