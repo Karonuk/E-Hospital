@@ -4,6 +4,8 @@ using E_Hospital.DAL;
 using E_Hospital.DAL.Repositories.Abstraction;
 using E_Hospital.DAL.Repositories.Implementation;
 using System.Data.Entity;
+using AutoMapper;
+using E_Hospital.BLL.Configuration.MappingProfiles;
 
 namespace E_Hospital.ConsoleHost.Configuration
 {
@@ -19,6 +21,12 @@ namespace E_Hospital.ConsoleHost.Configuration
 
             builder.RegisterType<AuthService>();
             builder.RegisterType<RegistrationService>();
+
+            builder.Register(ctx => { return new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()); })
+                .As<IConfigurationProvider>();
+
+            builder.Register(ctx => new Mapper(ctx.Resolve<IConfigurationProvider>()))
+                .As<IMapper>();
 
             return builder.Build();
         }

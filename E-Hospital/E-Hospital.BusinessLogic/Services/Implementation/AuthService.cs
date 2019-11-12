@@ -10,10 +10,10 @@ namespace E_Hospital.BLL.Services.Implementation
 {
     public class AuthService : IAuthService
     {
-        public AuthService(IUnitOfWork unitOfWork)
+        public AuthService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _usersRepository = unitOfWork.GetRepository<User>();
-            _mapper          = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
+            _mapper          = mapper;
         }
 
         public UserDto Login(string login, string password)
@@ -29,6 +29,6 @@ namespace E_Hospital.BLL.Services.Implementation
         }
 
         private readonly IRepository<User> _usersRepository;
-        private readonly Mapper            _mapper;
+        private readonly IMapper           _mapper;
     }
 }

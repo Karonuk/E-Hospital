@@ -15,6 +15,9 @@ namespace E_Hospital.BLL.Configuration.MappingProfiles
             CreateMap<DoctorDto, User>();
             CreateMap<PatientDto, User>()
                 .ForMember(dst => dst.Role, opt => opt.Ignore());
+            CreateMap<VisitRequest, VisitRequestDto>()
+                .ForMember(dst => dst.Doctor, opt => opt.MapFrom(src => src.Doctor))
+                .ForMember(dst => dst.Patient, opt => opt.MapFrom(src => src.Patient));
         }
     }
 }
