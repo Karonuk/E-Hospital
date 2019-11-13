@@ -56,4 +56,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PatientDto" nillable="true" type="tns:PatientDto" />
+  <xs:complexType name="ArrayOfSpecializationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecializationDto" nillable="true" type="tns:SpecializationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecializationDto" nillable="true" type="tns:ArrayOfSpecializationDto" />
+  <xs:complexType name="SpecializationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecializationDto" nillable="true" type="tns:SpecializationDto" />
 </xs:schema>

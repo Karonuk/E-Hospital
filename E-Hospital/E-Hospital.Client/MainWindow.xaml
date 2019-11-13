@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:E_Hospital.Client"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="E-Hospital" Height="450" Width="800">
+        Title="E-Hospital" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
             <TextBox Controls:TextBoxHelper.Watermark="Login" Margin="0 0 0 10" Name="LoginTextBox"></TextBox>

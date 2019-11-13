@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace E_Hospital.BLL.Services.Implementation
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
-    public class UserService : IDoctorService, IPatientService
+    public class UserService : IDoctorService, IPatientService, ICommonService
     {
         public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -22,10 +22,19 @@ namespace E_Hospital.BLL.Services.Implementation
 
             _mapper = mapper;
 
-            _activeDoctors = new Dictionary<DoctorDto, IDoctorCallback>();
-            _visitRequestRepository = unitOfWork.GetRepository<VisitRequest>();
-            _activePatients = new Dictionary<PatientDto, IPatientCallback>();
+            _activeDoctors             = new Dictionary<DoctorDto, IDoctorCallback>();
+            _visitRequestRepository    = unitOfWork.GetRepository<VisitRequest>();
+            _activePatients            = new Dictionary<PatientDto, IPatientCallback>();
+            _specializationsRepository = unitOfWork.GetRepository<Specialization>();
         }
+
+        public IEnumerable<SpecializationDto> GetSpecializations()
+        {
+            var specializations = _specializationsRepository.Get();
+
+            return _mapper.Map<SpecializationDto[]>(specializations);
+        }
+        
         #region Doctor
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
         {
@@ -141,5 +150,6 @@ namespace E_Hospital.BLL.Services.Implementation
         private readonly Dictionary<PatientDto, IPatientCallback> _activePatients;
         private readonly IRepository<VisitRequest> _visitRequestRepository;
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Specialization> _specializationsRepository;
     }
 }
