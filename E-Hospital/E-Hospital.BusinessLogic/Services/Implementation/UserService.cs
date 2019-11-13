@@ -39,13 +39,7 @@ namespace E_Hospital.BLL.Services.Implementation
         public IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor)
         {
             var pendingRequests = _requestsRepository.Get(d => d.DoctorId == doctor.Id && d.IsApproved == null,
-                cfg => cfg.Doctor, cfg => cfg.Patient);
-
-            if (_activeDoctors.All(x => x.Key.Id != doctor.Id))
-            {
-                var callback = OperationContext.Current.GetCallbackChannel<IDoctorCallback>();
-                _activeDoctors.Add(doctor, callback);
-            }
+                cfg => cfg.Doctor, cfg => cfg.Patient);            
 
             return _mapper.Map<VisitRequestDto[]>(pendingRequests);
         }
