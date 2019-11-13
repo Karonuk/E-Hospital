@@ -1,12 +1,34 @@
-﻿<Window x:Class="E_Hospital.Client.DoctorWindow"
+﻿<Controls:MetroWindow x:Class="E_Hospital.Client.DoctorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:E_Hospital.Client"
         mc:Ignorable="d"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="DoctorWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListBox Name="VisitRequestsListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Patient.FirstName"></Binding>
+                                    <Binding Path="Patient.LastName"></Binding>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Comment}"></TextBlock>
+                        <TextBlock Text="{Binding VisitTime, StringFormat='{}{0:MM/dd/yyyy hh:mm'}" Margin="0 0 0 10"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Decline" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 5 0" Click="DeclineButton_OnClick"></Button>
+                            <Button Content="Approve" Style="{StaticResource AccentedSquareButtonStyle}" Click="ApproveButton_OnClick"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
-</Window>
+</Controls:MetroWindow>

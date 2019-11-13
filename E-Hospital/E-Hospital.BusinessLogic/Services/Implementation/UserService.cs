@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services.Implementation
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
-    public class UserService:IDoctorService,IPatientService
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
+    public class UserService : IDoctorService, IPatientService
     {
         public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -24,7 +24,7 @@ namespace E_Hospital.BLL.Services.Implementation
 
             _activeDoctors = new Dictionary<DoctorDto, IDoctorCallback>();
             _visitRequestRepository = unitOfWork.GetRepository<VisitRequest>();
-            _activePatients = new Dictionary<PatientDto, IPatientCallback>();            
+            _activePatients = new Dictionary<PatientDto, IPatientCallback>();
         }
         #region Doctor
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
@@ -42,14 +42,14 @@ namespace E_Hospital.BLL.Services.Implementation
         public IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor)
         {
             var pendingRequests = _requestsRepository.Get(d => d.DoctorId == doctor.Id && d.IsApproved == null,
-                cfg => cfg.Doctor, cfg => cfg.Patient);            
+                cfg => cfg.Doctor, cfg => cfg.Patient);
 
             return _mapper.Map<VisitRequestDto[]>(pendingRequests);
         }
 
         public void ChangeRequestState(int visitRequestId, bool isApproved)
         {
-            var request = _requestsRepository.Single(x => x.Id == visitRequestId,x=>x.Doctor,x=>x.Patient);
+            var request = _requestsRepository.Single(x => x.Id == visitRequestId, x => x.Doctor, x => x.Patient);
 
             request.IsApproved = isApproved;
 
@@ -68,7 +68,7 @@ namespace E_Hospital.BLL.Services.Implementation
             }
         }
 
-        public void Logout(DoctorDto doctor)
+        public void LogoutDoctor(DoctorDto doctor)
         {
             var foundDoctor = _activeDoctors.FirstOrDefault(x => x.Key.Id == doctor.Id);
 
@@ -76,14 +76,14 @@ namespace E_Hospital.BLL.Services.Implementation
                 _activeDoctors.Remove(foundDoctor.Key);
         }
 
-        public void LogIn(DoctorDto doctor)
+        public void LogInDoctor(DoctorDto doctor)
         {
             _activeDoctors.Add(doctor, OperationContext.Current.GetCallbackChannel<IDoctorCallback>());
         }
 
         public DoctorDto GetDoctor(int userID)
         {
-            var user = _userRepository.Single(x => x.Id == userID,x=>x.Doctor.Specialization);
+            var user = _userRepository.Single(x => x.Id == userID, x => x.Doctor.Specialization);
             if (user != null)
             {
                 var doctor = _mapper.Map<DoctorDto>(user);
@@ -110,36 +110,36 @@ namespace E_Hospital.BLL.Services.Implementation
             ReceiveVisitRequest(visitRequest.Doctor, visitRequest);
         }
 
-        public void LogIn(PatientDto patient)
+        public void LogInPatient(PatientDto patient)
         {
             _activePatients.Add(patient, OperationContext.Current.GetCallbackChannel<IPatientCallback>());
         }
 
-        public void LogOut(PatientDto patient)
+        public void LogOutPatient(PatientDto patient)
         {
             var foundPatient = _activePatients.FirstOrDefault(x => x.Key.Id == patient.Id);
-            if (foundPatient.Key != null)            
-                _activePatients.Remove(foundPatient.Key);           
+            if (foundPatient.Key != null)
+                _activePatients.Remove(foundPatient.Key);
         }
 
         public PatientDto GetPatient(int userId)
         {
-            var user = _userRepository.Single(x => x.Id == userId,x=>x.Patient);
+            var user = _userRepository.Single(x => x.Id == userId, x => x.Patient);
             if (user != null)
             {
-                var patient=_mapper.Map<PatientDto>(user);
+                var patient = _mapper.Map<PatientDto>(user);
                 patient.MedicalCard = user.Patient.MedicalCard;
                 return patient;
             }
             return null;
-        }      
+        }
         #endregion
 
         private readonly IRepository<VisitRequest> _requestsRepository;
         private readonly IMapper _mapper;
         private readonly Dictionary<DoctorDto, IDoctorCallback> _activeDoctors;
         private readonly Dictionary<PatientDto, IPatientCallback> _activePatients;
-        private readonly IRepository<VisitRequest> _visitRequestRepository;       
+        private readonly IRepository<VisitRequest> _visitRequestRepository;
         private readonly IRepository<User> _userRepository;
     }
 }

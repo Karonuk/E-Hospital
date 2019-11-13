@@ -88,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\UserService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorHandler.cs" />
     <Compile Include="DoctorWindow.xaml.cs">
       <DependentUpon>DoctorWindow.xaml</DependentUpon>
     </Compile>
@@ -144,6 +150,25 @@
     <None Include="Connected Services\RegistrationService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\UserService\E_Hospital.BLL.Data.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.DoctorDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.PatientDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.VisitRequestDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService\service.wsdl" />
+    <None Include="Connected Services\UserService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -159,6 +184,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthService\" />
     <WCFMetadataStorage Include="Connected Services\RegistrationService\" />
+    <WCFMetadataStorage Include="Connected Services\UserService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\RegistrationService\configuration91.svcinfo" />
@@ -180,6 +206,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
