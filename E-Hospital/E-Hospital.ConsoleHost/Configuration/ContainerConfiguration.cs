@@ -19,16 +19,19 @@ namespace E_Hospital.ConsoleHost.Configuration
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>));
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
-            builder.RegisterType<AuthService>();
-            builder.RegisterType<RegistrationService>();
-            builder.RegisterType<UserService>();
-
             builder.Register(ctx => { return new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()); })
                 .As<IConfigurationProvider>();
 
             builder.Register(ctx => new Mapper(ctx.Resolve<IConfigurationProvider>()))
-                .As<IMapper>();
+               .As<IMapper>();
 
+            builder.RegisterType<AuthService>();
+            builder.RegisterType<RegistrationService>();
+            builder.RegisterType<UserService>();
+
+            
+
+          
             return builder.Build();
         }
     }
