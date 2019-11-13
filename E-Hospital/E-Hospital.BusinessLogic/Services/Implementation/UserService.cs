@@ -11,8 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services.Implementation
-{
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single)]
+{    
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class UserService:IDoctorService,IPatientService
     {
         public UserService(IUnitOfWork unitOfWork, IMapper mapper)
@@ -68,7 +68,7 @@ namespace E_Hospital.BLL.Services.Implementation
             }
         }
 
-        public void Logout(DoctorDto doctor)
+        public void LogoutDoctor(DoctorDto doctor)
         {
             var foundDoctor = _activeDoctors.FirstOrDefault(x => x.Key.Id == doctor.Id);
 
@@ -76,7 +76,7 @@ namespace E_Hospital.BLL.Services.Implementation
                 _activeDoctors.Remove(foundDoctor.Key);
         }
 
-        public void LogIn(DoctorDto doctor)
+        public void LogInDoctor(DoctorDto doctor)
         {
             _activeDoctors.Add(doctor, OperationContext.Current.GetCallbackChannel<IDoctorCallback>());
         }
@@ -110,12 +110,12 @@ namespace E_Hospital.BLL.Services.Implementation
             ReceiveVisitRequest(visitRequest.Doctor, visitRequest);
         }
 
-        public void LogIn(PatientDto patient)
+        public void LogInPatient(PatientDto patient)
         {
             _activePatients.Add(patient, OperationContext.Current.GetCallbackChannel<IPatientCallback>());
         }
 
-        public void LogOut(PatientDto patient)
+        public void LogOutPatient(PatientDto patient)
         {
             var foundPatient = _activePatients.FirstOrDefault(x => x.Key.Id == patient.Id);
             if (foundPatient.Key != null)            
@@ -132,7 +132,7 @@ namespace E_Hospital.BLL.Services.Implementation
                 return patient;
             }
             return null;
-        }      
+        }       
         #endregion
 
         private readonly IRepository<VisitRequest> _requestsRepository;
