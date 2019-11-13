@@ -33,12 +33,16 @@ namespace E_Hospital.Client
 
         private void RegisterAsDoctor_OnClick(object sender, RoutedEventArgs e)
         {
+            var window = new DoctorRegisterWindow();
 
+            window.ShowDialog();
         }
 
         private void RegisterAsPatient_OnClick(object sender, RoutedEventArgs e)
         {
+            var window = new PatientRegistrationWindow();
 
+            window.ShowDialog();
         }
     }
 }

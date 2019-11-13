@@ -12,7 +12,8 @@ namespace E_Hospital.BLL.Configuration.MappingProfiles
             CreateMap<User, UserDto>()
                 .ForMember(dst => dst.Role,
                     opt => opt.MapFrom(src => (UserRoles) Enum.Parse(typeof(UserRoles), src.Role.Name)));
-            CreateMap<DoctorDto, User>();
+            CreateMap<DoctorDto, User>()
+                .ForMember(dst => dst.Role, opt => opt.Ignore());
             CreateMap<User, DoctorDto>();
             CreateMap<PatientDto, User>()
                 .ForMember(dst => dst.Role, opt => opt.Ignore());
@@ -23,6 +24,7 @@ namespace E_Hospital.BLL.Configuration.MappingProfiles
             CreateMap<VisitRequestDto, VisitRequest>()
                 .ForMember(dst => dst.Doctor, opt => opt.MapFrom(src => src.Doctor))
                 .ForMember(dst => dst.Patient, opt => opt.MapFrom(src => src.Patient));
+            CreateMap<Specialization, SpecializationDto>();
         }
     }
 }

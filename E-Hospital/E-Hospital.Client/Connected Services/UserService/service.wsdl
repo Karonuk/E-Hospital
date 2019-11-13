@@ -707,6 +707,12 @@
   <wsdl:message name="IPatientService_UpdateRequestState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateRequestState" />
   </wsdl:message>
+  <wsdl:message name="ICommonService_GetSpecializations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecializations" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetSpecializations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecializationsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDoctorService">
     <wsdl:operation name="LogInDoctor">
       <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/LogInDoctor" message="tns:IDoctorService_LogInDoctor_InputMessage" />
@@ -756,6 +762,12 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateRequestState">
       <wsdl:output wsaw:Action="http://tempuri.org/IPatientService/UpdateRequestState" message="tns:IPatientService_UpdateRequestState_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICommonService">
+    <wsdl:operation name="GetSpecializations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/GetSpecializations" message="tns:ICommonService_GetSpecializations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/GetSpecializationsResponse" message="tns:ICommonService_GetSpecializations_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Doctor" type="tns:IDoctorService">
@@ -884,13 +896,25 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="Common" type="tns:ICommonService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSpecializations">
+      <soap:operation soapAction="http://tempuri.org/ICommonService/GetSpecializations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="UserService">
     <wsdl:port name="Doctor" binding="tns:Doctor">
       <soap12:address location="http://localhost:8733/Design_Time_Addresses/E_Hospital/user/doctor" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/doctor</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Lemich Maksym@rivne.itstep.org</Upn>
+          <Upn>MAKS\Maks</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -899,9 +923,12 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/patient</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Lemich Maksym@rivne.itstep.org</Upn>
+          <Upn>MAKS\Maks</Upn>
         </Identity>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="Common" binding="tns:Common">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/E_Hospital/user/common" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

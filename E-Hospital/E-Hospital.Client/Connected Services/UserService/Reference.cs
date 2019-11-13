@@ -338,6 +338,51 @@ namespace E_Hospital.Client.UserService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SpecializationDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
+    [System.SerializableAttribute()]
+    public partial class SpecializationDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IDoctorService", CallbackContract=typeof(E_Hospital.Client.UserService.IDoctorServiceCallback))]
     public interface IDoctorService {
@@ -585,6 +630,53 @@ namespace E_Hospital.Client.UserService {
         
         public System.Threading.Tasks.Task<E_Hospital.Client.UserService.PatientDto> GetPatientAsync(int userId) {
             return base.Channel.GetPatientAsync(userId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.ICommonService")]
+    public interface ICommonService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetSpecializations", ReplyAction="http://tempuri.org/ICommonService/GetSpecializationsResponse")]
+        E_Hospital.Client.UserService.SpecializationDto[] GetSpecializations();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetSpecializations", ReplyAction="http://tempuri.org/ICommonService/GetSpecializationsResponse")]
+        System.Threading.Tasks.Task<E_Hospital.Client.UserService.SpecializationDto[]> GetSpecializationsAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICommonServiceChannel : E_Hospital.Client.UserService.ICommonService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CommonServiceClient : System.ServiceModel.ClientBase<E_Hospital.Client.UserService.ICommonService>, E_Hospital.Client.UserService.ICommonService {
+        
+        public CommonServiceClient() {
+        }
+        
+        public CommonServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CommonServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CommonServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CommonServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public E_Hospital.Client.UserService.SpecializationDto[] GetSpecializations() {
+            return base.Channel.GetSpecializations();
+        }
+        
+        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.SpecializationDto[]> GetSpecializationsAsync() {
+            return base.Channel.GetSpecializationsAsync();
         }
     }
 }
