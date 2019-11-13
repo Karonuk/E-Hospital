@@ -22,8 +22,7 @@ namespace E_Hospital.ConsoleHost
 
                 authHost.AddDependencyInjectionBehavior<AuthService>(container);
                 registrationHost.AddDependencyInjectionBehavior<RegistrationService>(container);
-                userHost.AddDependencyInjectionBehavior<UserService>(container);
-
+                userHost.AddDependencyInjectionBehavior<UserService>(container);               
                 userHost.Open();
                 Console.WriteLine("User Service Started...");
                 authHost.Open();

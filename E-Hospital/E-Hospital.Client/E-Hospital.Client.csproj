@@ -66,6 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="PatientRegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DoctorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatientRegistrationWindow.xaml.cs">
+      <DependentUpon>PatientRegistrationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\AuthService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -221,6 +228,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\E-Hospital.BusinessLogic\E-Hospital.BLL.csproj">
+      <Project>{9B99F278-7952-496E-B147-A04D063FF4BF}</Project>
+      <Name>E-Hospital.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

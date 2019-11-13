@@ -1,0 +1,21 @@
+﻿<Controls:MetroWindow x:Class="E_Hospital.Client.PatientRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:E_Hospital.Client"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="PatientRegistration" Height="350" Width="450">
+    <Grid>
+        <StackPanel Name="RegisterPanel" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="400">
+            <TextBox Controls:TextBoxHelper.Watermark="Your Login" Margin="0 0 0 20" Text="{Binding Login}"></TextBox>
+            <PasswordBox Controls:TextBoxHelper.Watermark="Your Passwrod" Margin="0 0 0 10" Name="ClientPasswordBox"></PasswordBox>
+            <TextBox Controls:TextBoxHelper.Watermark="First Name" Margin="0 0 0 10" Text="{Binding FirstName}"></TextBox>
+            <TextBox Controls:TextBoxHelper.Watermark="Last Name" Margin="0 0 0 10" Text="{Binding LastName}"></TextBox>
+            <TextBox Controls:TextBoxHelper.Watermark="Phone Number" Margin="0 0 0 10" Text="{Binding PhoneNumber}"></TextBox>
+            <TextBox Controls:TextBoxHelper.Watermark="Medical Card" Margin="0 0 0 10" Text="{Binding MedicalCard}"></TextBox>
+            <Button Content="Register as Pacient" Style="{StaticResource AccentedSquareButtonStyle}" Margin ="0 0 0 10" Click="RegistrationClick"></Button>
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
