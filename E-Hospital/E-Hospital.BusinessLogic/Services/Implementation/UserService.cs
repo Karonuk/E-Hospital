@@ -81,7 +81,7 @@ namespace E_Hospital.BLL.Services.Implementation
             _activeDoctors.Add(doctor, OperationContext.Current.GetCallbackChannel<IDoctorCallback>());
         }
 
-        public DoctorDto GetDoctor(int UserID)
+        public DoctorDto GetDoctor(int userID)
         {
             var user = _userRepository.Single(x => x.Id == UserID,x=>x.Doctor.Specialization);
             if (user != null)
@@ -122,9 +122,9 @@ namespace E_Hospital.BLL.Services.Implementation
                 _activePatients.Remove(foundPatient.Key);           
         }
 
-        public PatientDto GetPatient(int UserId)
+        public PatientDto GetPatient(int userId)
         {
-            var user = _userRepository.Single(x => x.Id == UserId,x=>x.Patient);
+            var user = _userRepository.Single(x => x.Id == userId,x=>x.Patient);
             if (user != null)
             {
                 var patient=_mapper.Map<PatientDto>(user);

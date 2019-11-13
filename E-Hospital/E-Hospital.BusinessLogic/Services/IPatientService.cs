@@ -15,6 +15,6 @@ namespace E_Hospital.BLL.Services
         [OperationContract (IsOneWay =true)] void SendVisitRequest(VisitRequestDto visitRequest);
         [OperationContract(IsOneWay = true)] void LogIn(PatientDto patient);
         [OperationContract(IsOneWay = true)] void LogOut(PatientDto patient);        
-        [OperationContract] PatientDto GetPatient(int UserId);
+        [OperationContract] PatientDto GetPatient(int userId);
     }
 }
