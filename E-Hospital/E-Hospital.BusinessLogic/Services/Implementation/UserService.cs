@@ -89,11 +89,7 @@ namespace E_Hospital.BLL.Services.Implementation
         {
             _visitRequestRepository.Add(_mapper.Map<VisitRequest>(visitRequest));
 
-            var selectedDoctor = _activeDoctors.FirstOrDefault(x => x.Key.Id == visitRequest.Doctor.Id);
-            if (selectedDoctor.Key != null)
-            {
-                selectedDoctor.Value.UpdatePendingRequests(visitRequest);
-            }
+            ReceiveVisitRequest(visitRequest.Doctor, visitRequest);
         }
 
         public void LogIn(PatientDto patient)
