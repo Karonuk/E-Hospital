@@ -40,7 +40,9 @@ namespace E_Hospital.Client
 
         private void RegisterAsPatient_OnClick(object sender, RoutedEventArgs e)
         {
+            var window = new PatientRegistrationWindow();
 
+            window.ShowDialog();
         }
     }
 }
