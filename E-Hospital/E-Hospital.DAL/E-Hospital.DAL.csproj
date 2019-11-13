@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201911111746465_initial.designer.cs">
       <DependentUpon>201911111746465_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911121836060_MigrationHospital.cs" />
+    <Compile Include="Migrations\201911121836060_MigrationHospital.designer.cs">
+      <DependentUpon>201911121836060_MigrationHospital.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Abstraction\IRepository.cs" />
@@ -76,6 +80,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201911111746465_initial.resx">
       <DependentUpon>201911111746465_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911121836060_MigrationHospital.resx">
+      <DependentUpon>201911121836060_MigrationHospital.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

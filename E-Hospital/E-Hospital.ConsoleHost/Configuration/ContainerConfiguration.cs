@@ -28,9 +28,6 @@ namespace E_Hospital.ConsoleHost.Configuration
             builder.RegisterType<AuthService>();
             builder.RegisterType<RegistrationService>();
             builder.RegisterType<UserService>();
-
-            
-
           
             return builder.Build();
         }

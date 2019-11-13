@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace E_Hospital.BLL.Services
 {
-    [ServiceContract (CallbackContract = typeof(IPatientCallback))]
+    [ServiceContract(CallbackContract = typeof(IPatientCallback))]
     public interface IPatientService
     {
         [OperationContract] IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto currentPatient);
-        [OperationContract (IsOneWay =true)] void SendVisitRequest(VisitRequestDto visitRequest);
+        [OperationContract(IsOneWay = true)] void SendVisitRequest(VisitRequestDto visitRequest);
         [OperationContract(IsOneWay = true)] void LogInPatient(PatientDto patient);
-        [OperationContract(IsOneWay = true)] void LogOutPatient(PatientDto patient);        
+        [OperationContract(IsOneWay = true)] void LogOutPatient(PatientDto patient);
         [OperationContract] PatientDto GetPatient(int userId);
     }
 }

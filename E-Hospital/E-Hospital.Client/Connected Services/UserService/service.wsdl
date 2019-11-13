@@ -890,7 +890,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/doctor</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Pyshnyak@rivne.itstep.org</Upn>
+          <Upn>Lemich Maksym@rivne.itstep.org</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -899,7 +899,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/patient</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Pyshnyak@rivne.itstep.org</Upn>
+          <Upn>Lemich Maksym@rivne.itstep.org</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
