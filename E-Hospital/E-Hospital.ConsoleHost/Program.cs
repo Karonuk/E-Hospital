@@ -14,7 +14,7 @@ namespace E_Hospital.ConsoleHost
         {            
             var authHost         = new ServiceHost(typeof(AuthService));
             var registrationHost = new ServiceHost(typeof(RegistrationService));           
-            var userHost         =new ServiceHost(container.Resolve<UserService>());
+            var userHost         = new ServiceHost(container.Resolve<UserService>());
 
             authHost.AddDependencyInjectionBehavior<AuthService>(container);
             registrationHost.AddDependencyInjectionBehavior<RegistrationService>(container);
