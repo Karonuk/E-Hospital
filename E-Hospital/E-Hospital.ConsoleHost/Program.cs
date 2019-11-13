@@ -37,7 +37,6 @@ namespace E_Hospital.ConsoleHost
             {
                 Console.WriteLine(ex.ToString());
             }
-
         }
     }
 }
