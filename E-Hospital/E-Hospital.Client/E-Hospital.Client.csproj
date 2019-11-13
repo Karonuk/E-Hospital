@@ -70,16 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\DoctorService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\PatientService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\RegistrationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,32 +111,6 @@
     <None Include="Connected Services\AuthService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\DoctorService\DoctorService.wsdl" />
-    <None Include="Connected Services\DoctorService\E_Hospital.Client.DoctorService.VisitRequestDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoctorService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DoctorService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DoctorService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\PatientService\E_Hospital.BLL.Data.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\PatientService\E_Hospital.Client.PatientService.VisitRequestDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\PatientService\service.wsdl" />
-    <None Include="Connected Services\PatientService\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\PatientService\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\RegistrationService\E_Hospital.BLL.Data.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -170,8 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\AuthService\" />
-    <WCFMetadataStorage Include="Connected Services\DoctorService\" />
-    <WCFMetadataStorage Include="Connected Services\PatientService\" />
     <WCFMetadataStorage Include="Connected Services\RegistrationService\" />
   </ItemGroup>
   <ItemGroup>
@@ -194,33 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AuthService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\DoctorService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\DoctorService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\DoctorService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\DoctorService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PatientService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PatientService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PatientService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

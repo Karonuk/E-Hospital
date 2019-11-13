@@ -13,8 +13,10 @@ namespace E_Hospital.BLL.Configuration.MappingProfiles
                 .ForMember(dst => dst.Role,
                     opt => opt.MapFrom(src => (UserRoles) Enum.Parse(typeof(UserRoles), src.Role.Name)));
             CreateMap<DoctorDto, User>();
+            CreateMap<User, DoctorDto>();
             CreateMap<PatientDto, User>()
                 .ForMember(dst => dst.Role, opt => opt.Ignore());
+            CreateMap<User, PatientDto>();
             CreateMap<VisitRequest, VisitRequestDto>()
                 .ForMember(dst => dst.Doctor, opt => opt.MapFrom(src => src.Doctor))
                 .ForMember(dst => dst.Patient, opt => opt.MapFrom(src => src.Patient));

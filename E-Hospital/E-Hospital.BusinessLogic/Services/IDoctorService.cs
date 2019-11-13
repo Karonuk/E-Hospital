@@ -7,6 +7,8 @@ namespace E_Hospital.BLL.Services
     [ServiceContract(CallbackContract = typeof(IDoctorCallback))]
     public interface IDoctorService
     {
+        [OperationContract(IsOneWay =true)]
+        void LogIn(DoctorDto doctor);
         [OperationContract]
         IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor);
 
@@ -21,5 +23,7 @@ namespace E_Hospital.BLL.Services
 
         [OperationContract(IsOneWay = true)]
         void Logout(DoctorDto doctor);
+        [OperationContract]
+        DoctorDto GetDoctor(int userId);
     }
 }
