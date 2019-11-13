@@ -25,9 +25,12 @@ namespace E_Hospital.Client
         public RegistrationService.PatientDto NewPatient { get; set; }
         public PatientRegistrationWindow()
         {
+           
+            InitializeComponent();
+
             NewPatient = new RegistrationService.PatientDto();
             _client = new RegistrationService.RegistrationServiceClient();
-            InitializeComponent();
+
             _client.Open();
             RegisterPanel.DataContext = NewPatient;
             
