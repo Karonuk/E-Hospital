@@ -52,13 +52,13 @@ namespace E_Hospital.BLL.Services.Implementation
 
         public void ChangeRequestState(int visitRequestId, bool isApproved)
         {
-            var request = _requestsRepository.Single(x => x.Id == visitRequestId);
+            var request = _requestsRepository.Single(x => x.Id == visitRequestId,x=>x.Doctor,x=>x.Patient);
 
             request.IsApproved = isApproved;
 
             _requestsRepository.Update(request);
 
-            var selectedPatient = _activePatients.FirstOrDefault(x => x.Key.Id == request.Doctor.Id);
+            var selectedPatient = _activePatients.FirstOrDefault(x => x.Key.Id == request.Patient.Id);
             if (selectedPatient.Key != null)
                 selectedPatient.Value.UpdateRequestState(_mapper.Map<VisitRequestDto>(request));
         }
@@ -77,6 +77,11 @@ namespace E_Hospital.BLL.Services.Implementation
 
             if (foundDoctor.Key != null)
                 _activeDoctors.Remove(foundDoctor.Key);
+        }
+
+        public void LogIn(DoctorDto doctor)
+        {
+            _activeDoctors.Add(doctor, OperationContext.Current.GetCallbackChannel<IDoctorCallback>());
         }
         #endregion
         #region Patient
@@ -108,7 +113,9 @@ namespace E_Hospital.BLL.Services.Implementation
             if (foundPatient.Key != null)            
                 _activePatients.Remove(foundPatient.Key);           
         }
-        #endregion 
+
+        
+        #endregion
         private readonly IRepository<VisitRequest> _requestsRepository;
         private readonly IMapper _mapper;
         private readonly Dictionary<DoctorDto, IDoctorCallback> _activeDoctors;

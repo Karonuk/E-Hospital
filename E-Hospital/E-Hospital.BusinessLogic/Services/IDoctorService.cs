@@ -8,6 +8,8 @@ namespace E_Hospital.BLL.Services
     public interface IDoctorService
     {
         [OperationContract]
+        void LogIn(DoctorDto doctor);
+        [OperationContract]
         IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor);
 
         [OperationContract]
