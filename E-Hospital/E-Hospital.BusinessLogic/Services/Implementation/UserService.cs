@@ -83,15 +83,15 @@ namespace E_Hospital.BLL.Services.Implementation
 
         public DoctorDto GetDoctor(int userID)
         {
-            var user = _userRepository.Single(x => x.Id == UserID,x=>x.Doctor.Specialization);
+            var user = _userRepository.Single(x => x.Id == userID,x=>x.Doctor.Specialization);
             if (user != null)
             {
                 var doctor = _mapper.Map<DoctorDto>(user);
                 doctor.SpecializationName = user.Doctor.Specialization.Name;
                 return doctor;
             }
+
             return null;
-                   
         }
 
         #endregion
