@@ -23,5 +23,7 @@ namespace E_Hospital.BLL.Services
 
         [OperationContract(IsOneWay = true)]
         void Logout(DoctorDto doctor);
+        [OperationContract]
+        DoctorDto GetDoctor(int UserId);
     }
 }

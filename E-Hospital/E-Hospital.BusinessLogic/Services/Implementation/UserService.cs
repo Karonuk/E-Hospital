@@ -18,10 +18,13 @@ namespace E_Hospital.BLL.Services.Implementation
         public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _requestsRepository = unitOfWork.GetRepository<VisitRequest>();
+            _userRepository = unitOfWork.GetRepository<User>();
+
             _mapper = mapper;
+
             _activeDoctors = new Dictionary<DoctorDto, IDoctorCallback>();
             _visitRequestRepository = unitOfWork.GetRepository<VisitRequest>();
-            _activePatients = new Dictionary<PatientDto, IPatientCallback>();
+            _activePatients = new Dictionary<PatientDto, IPatientCallback>();            
         }
         #region Doctor
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
@@ -77,7 +80,22 @@ namespace E_Hospital.BLL.Services.Implementation
         {
             _activeDoctors.Add(doctor, OperationContext.Current.GetCallbackChannel<IDoctorCallback>());
         }
+
+        public DoctorDto GetDoctor(int UserID)
+        {
+            var user = _userRepository.Single(x => x.Id == UserID,x=>x.Doctor.Specialization);
+            if (user != null)
+            {
+                var doctor = _mapper.Map<DoctorDto>(user);
+                doctor.SpecializationName = user.Doctor.Specialization.Name;
+                return doctor;
+            }
+            return null;
+                   
+        }
+
         #endregion
+
         #region Patient
         public IEnumerable<VisitRequestDto> GetVisitRequests(PatientDto patient)
         {
@@ -104,12 +122,24 @@ namespace E_Hospital.BLL.Services.Implementation
                 _activePatients.Remove(foundPatient.Key);           
         }
 
-        
+        public PatientDto GetPatient(int UserId)
+        {
+            var user = _userRepository.Single(x => x.Id == UserId,x=>x.Patient);
+            if (user != null)
+            {
+                var patient=_mapper.Map<PatientDto>(user);
+                patient.MedicalCard = user.Patient.MedicalCard;
+                return patient;
+            }
+            return null;
+        }      
         #endregion
+
         private readonly IRepository<VisitRequest> _requestsRepository;
         private readonly IMapper _mapper;
         private readonly Dictionary<DoctorDto, IDoctorCallback> _activeDoctors;
         private readonly Dictionary<PatientDto, IPatientCallback> _activePatients;
-        private readonly IRepository<VisitRequest> _visitRequestRepository;
+        private readonly IRepository<VisitRequest> _visitRequestRepository;       
+        private readonly IRepository<User> _userRepository;
     }
 }
