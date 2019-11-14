@@ -1,12 +1,21 @@
-﻿<Window x:Class="E_Hospital.Client.MainWindow"
+﻿<Controls:MetroWindow x:Class="E_Hospital.Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:E_Hospital.Client"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="E-Hospital" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <TextBox Controls:TextBoxHelper.Watermark="Login" Margin="0 0 0 10" Name="LoginTextBox"></TextBox>
+            <PasswordBox Controls:TextBoxHelper.Watermark="Password" Margin="0 0 0 10" Name="PasswordTextBox"></PasswordBox>
+            <Button Content="Log in" Style="{StaticResource AccentedSquareButtonStyle}" Margin ="0 0 0 10" Click="LogInButton_OnClick"></Button>
+            <Button Content="Register as Doctor" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10" Click="RegisterAsDoctor_OnClick"></Button>
+            <Button Content="Register as Patient" Style="{DynamicResource SquareButtonStyle}" Margin="0 0 0 10" Click="RegisterAsPatient_OnClick"></Button>
+                
+        </StackPanel>
         
     </Grid>
-</Window>
+</Controls:MetroWindow>
