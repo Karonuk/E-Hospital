@@ -17,7 +17,7 @@ namespace E_Hospital.Client
         {
             InitializeComponent();
             _authService    = new AuthServiceClient();
-            _doctorService  = new DoctorServiceClient(new InstanceContext(new DoctorHandler()));
+            _doctorService  = new DoctorServiceClient(new InstanceContext(new DoctorHandler(null)));
             _patientService = new PatientServiceClient(new InstanceContext(new PatientHandler()));
         }
 

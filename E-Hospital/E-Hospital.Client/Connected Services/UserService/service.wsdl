@@ -713,6 +713,12 @@
   <wsdl:message name="ICommonService_GetSpecializations_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSpecializationsResponse" />
   </wsdl:message>
+  <wsdl:message name="ICommonService_GetDoctors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctors" />
+  </wsdl:message>
+  <wsdl:message name="ICommonService_GetDoctors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDoctorService">
     <wsdl:operation name="LogInDoctor">
       <wsdl:input wsaw:Action="http://tempuri.org/IDoctorService/LogInDoctor" message="tns:IDoctorService_LogInDoctor_InputMessage" />
@@ -768,6 +774,10 @@
     <wsdl:operation name="GetSpecializations">
       <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/GetSpecializations" message="tns:ICommonService_GetSpecializations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/GetSpecializationsResponse" message="tns:ICommonService_GetSpecializations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonService/GetDoctors" message="tns:ICommonService_GetDoctors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonService/GetDoctorsResponse" message="tns:ICommonService_GetDoctors_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Doctor" type="tns:IDoctorService">
@@ -907,6 +917,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <soap:operation soapAction="http://tempuri.org/ICommonService/GetDoctors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserService">
     <wsdl:port name="Doctor" binding="tns:Doctor">
@@ -914,7 +933,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/doctor</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MAKS\Maks</Upn>
+          <Upn>MAKS-PC\Maks</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -923,7 +942,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8733/Design_Time_Addresses/E_Hospital/user/patient</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MAKS\Maks</Upn>
+          <Upn>MAKS-PC\Maks</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

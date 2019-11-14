@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using E_Hospital.BLL.Data;
 using E_Hospital.Client.RegistrationService;
 using E_Hospital.Client.UserService;
 using MahApps.Metro.Controls;

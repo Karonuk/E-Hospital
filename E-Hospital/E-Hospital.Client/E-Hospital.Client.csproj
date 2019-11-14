@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VisitRequestWindow.xaml.cs">
+      <DependentUpon>VisitRequestWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="DoctorRegisterWindow.xaml" />
     <Page Include="PatientRegistrationWindow.xaml">
       <SubType>Designer</SubType>
@@ -117,6 +120,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VisitRequestWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PatientWindow.xaml.cs">
@@ -165,18 +169,6 @@
     <None Include="Connected Services\UserService\E_Hospital.BLL.Data.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.DoctorDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.PatientDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.SpecializationDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\UserService\E_Hospital.Client.UserService.VisitRequestDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\UserService\service.wsdl" />
     <None Include="Connected Services\UserService\service.xsd">
       <SubType>Designer</SubType>
@@ -185,6 +177,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\E_Hospital.BLL.Data.DoctorDto.datasource" />
+    <None Include="Properties\DataSources\E_Hospital.BLL.Data.PatientDto.datasource" />
+    <None Include="Properties\DataSources\E_Hospital.BLL.Data.SpecializationDto.datasource" />
+    <None Include="Properties\DataSources\E_Hospital.BLL.Data.VisitRequestDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

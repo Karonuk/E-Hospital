@@ -34,7 +34,14 @@ namespace E_Hospital.BLL.Services.Implementation
 
             return _mapper.Map<SpecializationDto[]>(specializations);
         }
-        
+
+        public IEnumerable<DoctorDto> GetDoctors()
+        {
+            var doctors = _userRepository.Get(includes: x => x.Doctor.Specialization);
+
+            return _mapper.Map<DoctorDto[]>(doctors);
+        }
+
         #region Doctor
         public IEnumerable<VisitRequestDto> GetScheduleForToday(DoctorDto doctor)
         {
@@ -51,7 +58,8 @@ namespace E_Hospital.BLL.Services.Implementation
         public IEnumerable<VisitRequestDto> GetPendingRequests(DoctorDto doctor)
         {
             var pendingRequests = _requestsRepository.Get(d => d.DoctorId == doctor.Id && d.IsApproved == null,
-                cfg => cfg.Doctor, cfg => cfg.Patient);
+                cfg => cfg.Doctor, cfg => cfg.Doctor.User, cfg => cfg.Patient, cfg => cfg.Patient.User, 
+                cfg => cfg.Doctor.Specialization);
 
             return _mapper.Map<VisitRequestDto[]>(pendingRequests);
         }
@@ -114,7 +122,16 @@ namespace E_Hospital.BLL.Services.Implementation
 
         public void SendVisitRequest(VisitRequestDto visitRequest)
         {
-            _visitRequestRepository.Add(_mapper.Map<VisitRequest>(visitRequest));
+            var request = new VisitRequest
+            {
+                Comment = visitRequest.Comment,
+                DoctorId = visitRequest.Doctor.Id,
+                PatientId = visitRequest.Patient.Id,
+                IsApproved = visitRequest.IsApproved,
+                VisitTime = visitRequest.VisitTime
+            };
+            
+            _visitRequestRepository.Add(request);
 
             ReceiveVisitRequest(visitRequest.Doctor, visitRequest);
         }

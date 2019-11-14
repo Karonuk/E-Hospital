@@ -9,5 +9,8 @@ namespace E_Hospital.BLL.Services
     {
         [OperationContract]
         IEnumerable<SpecializationDto> GetSpecializations();
+
+        [OperationContract]
+        IEnumerable<DoctorDto> GetDoctors();
     }
 }

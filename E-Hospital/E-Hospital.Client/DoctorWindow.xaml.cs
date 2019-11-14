@@ -1,8 +1,10 @@
 ﻿using E_Hospital.Client.UserService;
 using MahApps.Metro.Controls;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ServiceModel;
 using System.Windows;
+using E_Hospital.BLL.Data;
 
 namespace E_Hospital.Client
 {
@@ -11,42 +13,48 @@ namespace E_Hospital.Client
     /// </summary>
     public partial class DoctorWindow : MetroWindow
     {
+        public readonly ObservableCollection<VisitRequestDto> VisitRequests;
+
         public DoctorWindow(DoctorDto doctor)
         {
             InitializeComponent();
 
-            _doctor = doctor;
-            _visitRequests = new ObservableCollection<VisitRequestDto>();
+            _doctor       = doctor;
+            VisitRequests = new ObservableCollection<VisitRequestDto>();
 
-            var context = new InstanceContext(new DoctorHandler());
+            var context = new InstanceContext(new DoctorHandler(this));
 
             _server = new DoctorServiceClient(context);
-            
+
             InitializeRequests();
 
-            VisitRequestsListBox.ItemsSource = _visitRequests;
+            VisitRequestsListBox.ItemsSource = VisitRequests;
+
+            _server.LogInDoctor(_doctor);
         }
 
-        private readonly UserService.DoctorDto _doctor;
-        private readonly ObservableCollection<VisitRequestDto> _visitRequests;
+        private readonly DoctorDto           _doctor;
         private readonly DoctorServiceClient _server;
 
         private void InitializeRequests()
         {
-            foreach(var i in _server.GetPendingRequests(_doctor))
+            foreach (var i in _server.GetPendingRequests(_doctor))
             {
-                _visitRequests.Add(i);
+                VisitRequests.Add(i);
             }
         }
 
         private void DeclineButton_OnClick(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void ApproveButton_OnClick(object sender, RoutedEventArgs e)
         {
+        }
 
+        private void DoctorWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            _server.LogoutDoctor(_doctor);
         }
     }
 }
