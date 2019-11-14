@@ -6,7 +6,7 @@
                       xmlns:local="clr-namespace:E_Hospital.Client"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       mc:Ignorable="d"
-                      Title="DoctorRegisterWindow" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+                      Title="Register Doctor" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
         <TextBox Name="FirstNameTextBox" controls:TextBoxHelper.Watermark="First name" Margin="0 0 0 10" />
         <TextBox Name="LastNameTextBox" controls:TextBoxHelper.Watermark="Last name" Margin="0 0 0 10" />

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using E_Hospital.Client.UserService;
 
 namespace E_Hospital.Client
 {
@@ -19,9 +20,13 @@ namespace E_Hospital.Client
     /// </summary>
     public partial class PatientWindow : Window
     {
-        public PatientWindow()
+        public PatientWindow(PatientDto patient)
         {
             InitializeComponent();
+
+            _patient = patient;
         }
+
+        private readonly PatientDto _patient;
     }
 }

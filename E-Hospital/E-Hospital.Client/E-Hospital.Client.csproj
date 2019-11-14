@@ -83,6 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PatientHandler.cs" />
     <Compile Include="PatientRegistrationWindow.xaml.cs">
       <DependentUpon>PatientRegistrationWindow.xaml</DependentUpon>
     </Compile>

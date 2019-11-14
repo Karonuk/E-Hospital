@@ -1,21 +1,8 @@
-﻿using E_Hospital.Client.RegistrationService;
-using E_Hospital.Client.UserService;
+﻿using E_Hospital.Client.UserService;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace E_Hospital.Client
 {
@@ -24,7 +11,7 @@ namespace E_Hospital.Client
     /// </summary>
     public partial class DoctorWindow : MetroWindow
     {
-        public DoctorWindow(UserService.DoctorDto doctor)
+        public DoctorWindow(DoctorDto doctor)
         {
             InitializeComponent();
 
@@ -34,6 +21,8 @@ namespace E_Hospital.Client
             var context = new InstanceContext(new DoctorHandler());
 
             _server = new DoctorServiceClient(context);
+            
+            InitializeRequests();
 
             VisitRequestsListBox.ItemsSource = _visitRequests;
         }
