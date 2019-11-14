@@ -1,5 +1,4 @@
-﻿
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -22,44 +21,42 @@ namespace E_Hospital.Client
     /// </summary>
     public partial class PatientRegistrationWindow : MetroWindow
     {
-        public RegistrationService.PatientDto NewPatient { get; set; }
+        private RegistrationService.PatientDto NewPatient { get; set; }
+
         public PatientRegistrationWindow()
         {
-           
             InitializeComponent();
 
             NewPatient = new RegistrationService.PatientDto();
-            _client = new RegistrationService.RegistrationServiceClient();
+            _client    = new RegistrationService.RegistrationServiceClient();
 
-            _client.Open();
             RegisterPanel.DataContext = NewPatient;
-            
         }
 
         private bool CheckForNull()
         {
-            if (NewPatient.Login != null && NewPatient.FirstName != null &&
-                NewPatient.LastName != null && NewPatient.PhoneNumber != null && NewPatient.MedicalCard != null)
-                return true;
-            else
-                return false;
+            return NewPatient.Login != null &&
+                   NewPatient.FirstName != null &&
+                   NewPatient.LastName != null &&
+                   NewPatient.PhoneNumber != null &&
+                   NewPatient.MedicalCard != null;
         }
-        private void RegistrationClick(object sender, RoutedEventArgs e)
+
+        private async void RegistrationClick(object sender, RoutedEventArgs e)
         {
-            if (CheckForNull())
+            if (!CheckForNull())
             {
-                NewPatient.Password = ClientPasswordBox.Password;
-                NewPatient.Role = RegistrationService.UserRoles.Patient;
-                if (_client.RegisterPatient(NewPatient))
-                    this.ShowMessageAsync("Succesfully", "Succesfully registered");
-                else
-                    this.ShowMessageAsync("Error", "Something went wrong");
-                
+                await this.ShowMessageAsync("Warning", "You need to fill all the fields.");
+                return;
             }
+
+            NewPatient.Password = ClientPasswordBox.Password;
+            NewPatient.Role     = RegistrationService.UserRoles.Patient;
+
+            if (_client.RegisterPatient(NewPatient))
+                await this.ShowMessageAsync("Success", "Successfully registered.");
             else
-            {
-                this.ShowMessageAsync("Warning", "Please fill all fields");
-            }
+                await this.ShowMessageAsync("Error", "Not registered.");
         }
 
         private readonly RegistrationService.RegistrationServiceClient _client;

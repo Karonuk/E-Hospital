@@ -4,14 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using E_Hospital.BLL.Data;
 
 namespace E_Hospital.Client
 {
-    class DoctorHandler : IDoctorServiceCallback
+    public class DoctorHandler : IDoctorServiceCallback
     {
+        public DoctorHandler(DoctorWindow doctorWindow)
+        {
+            _doctorWindow = doctorWindow;
+        }
+
         public void UpdatePendingRequests(VisitRequestDto visitRequest)
         {
-            throw new NotImplementedException();
+            _doctorWindow?.Dispatcher?.Invoke(() => { _doctorWindow.VisitRequests.Add(visitRequest); });
         }
+
+        private readonly DoctorWindow _doctorWindow;
     }
 }

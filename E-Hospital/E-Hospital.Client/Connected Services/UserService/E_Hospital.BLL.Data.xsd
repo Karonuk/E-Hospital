@@ -68,4 +68,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SpecializationDto" nillable="true" type="tns:SpecializationDto" />
+  <xs:complexType name="ArrayOfDoctorDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DoctorDto" nillable="true" type="tns:DoctorDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoctorDto" nillable="true" type="tns:ArrayOfDoctorDto" />
 </xs:schema>

@@ -9,401 +9,29 @@
 //------------------------------------------------------------------------------
 
 namespace E_Hospital.Client.UserService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(E_Hospital.Client.UserService.PatientDto))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(E_Hospital.Client.UserService.DoctorDto))]
-    public partial class UserDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LoginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private E_Hospital.Client.UserService.UserRoles RoleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Login {
-            get {
-                return this.LoginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
-                    this.LoginField = value;
-                    this.RaisePropertyChanged("Login");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PhoneNumber {
-            get {
-                return this.PhoneNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public E_Hospital.Client.UserService.UserRoles Role {
-            get {
-                return this.RoleField;
-            }
-            set {
-                if ((this.RoleField.Equals(value) != true)) {
-                    this.RoleField = value;
-                    this.RaisePropertyChanged("Role");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PatientDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    [System.SerializableAttribute()]
-    public partial class PatientDto : E_Hospital.Client.UserService.UserDto {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MedicalCardField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MedicalCard {
-            get {
-                return this.MedicalCardField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MedicalCardField, value) != true)) {
-                    this.MedicalCardField = value;
-                    this.RaisePropertyChanged("MedicalCard");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DoctorDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    [System.SerializableAttribute()]
-    public partial class DoctorDto : E_Hospital.Client.UserService.UserDto {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SpecializationNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SpecializationName {
-            get {
-                return this.SpecializationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SpecializationNameField, value) != true)) {
-                    this.SpecializationNameField = value;
-                    this.RaisePropertyChanged("SpecializationName");
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoles", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    public enum UserRoles : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Doctor = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Patient = 1,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="VisitRequestDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    [System.SerializableAttribute()]
-    public partial class VisitRequestDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CommentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private E_Hospital.Client.UserService.DoctorDto DoctorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> IsApprovedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private E_Hospital.Client.UserService.PatientDto PatientField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime VisitTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Comment {
-            get {
-                return this.CommentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
-                    this.CommentField = value;
-                    this.RaisePropertyChanged("Comment");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public E_Hospital.Client.UserService.DoctorDto Doctor {
-            get {
-                return this.DoctorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
-                    this.DoctorField = value;
-                    this.RaisePropertyChanged("Doctor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> IsApproved {
-            get {
-                return this.IsApprovedField;
-            }
-            set {
-                if ((this.IsApprovedField.Equals(value) != true)) {
-                    this.IsApprovedField = value;
-                    this.RaisePropertyChanged("IsApproved");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public E_Hospital.Client.UserService.PatientDto Patient {
-            get {
-                return this.PatientField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PatientField, value) != true)) {
-                    this.PatientField = value;
-                    this.RaisePropertyChanged("Patient");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime VisitTime {
-            get {
-                return this.VisitTimeField;
-            }
-            set {
-                if ((this.VisitTimeField.Equals(value) != true)) {
-                    this.VisitTimeField = value;
-                    this.RaisePropertyChanged("VisitTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SpecializationDto", Namespace="http://schemas.datacontract.org/2004/07/E_Hospital.BLL.Data")]
-    [System.SerializableAttribute()]
-    public partial class SpecializationDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IDoctorService", CallbackContract=typeof(E_Hospital.Client.UserService.IDoctorServiceCallback))]
     public interface IDoctorService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/LogInDoctor")]
-        void LogInDoctor(E_Hospital.Client.UserService.DoctorDto doctor);
+        void LogInDoctor(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/LogInDoctor")]
-        System.Threading.Tasks.Task LogInDoctorAsync(E_Hospital.Client.UserService.DoctorDto doctor);
+        System.Threading.Tasks.Task LogInDoctorAsync(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetScheduleForToday", ReplyAction="http://tempuri.org/IDoctorService/GetScheduleForTodayResponse")]
-        E_Hospital.Client.UserService.VisitRequestDto[] GetScheduleForToday(E_Hospital.Client.UserService.DoctorDto doctor);
+        E_Hospital.BLL.Data.VisitRequestDto[] GetScheduleForToday(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetScheduleForToday", ReplyAction="http://tempuri.org/IDoctorService/GetScheduleForTodayResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetScheduleForTodayAsync(E_Hospital.Client.UserService.DoctorDto doctor);
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetScheduleForTodayAsync(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetPendingRequests", ReplyAction="http://tempuri.org/IDoctorService/GetPendingRequestsResponse")]
-        E_Hospital.Client.UserService.VisitRequestDto[] GetPendingRequests(E_Hospital.Client.UserService.DoctorDto doctor);
+        E_Hospital.BLL.Data.VisitRequestDto[] GetPendingRequests(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetPendingRequests", ReplyAction="http://tempuri.org/IDoctorService/GetPendingRequestsResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetPendingRequestsAsync(E_Hospital.Client.UserService.DoctorDto doctor);
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetPendingRequestsAsync(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/ChangeRequestState")]
         void ChangeRequestState(int visitRequestId, bool isApproved);
@@ -412,29 +40,29 @@ namespace E_Hospital.Client.UserService {
         System.Threading.Tasks.Task ChangeRequestStateAsync(int visitRequestId, bool isApproved);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/ReceiveVisitRequest")]
-        void ReceiveVisitRequest(E_Hospital.Client.UserService.DoctorDto doctor, E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        void ReceiveVisitRequest(E_Hospital.BLL.Data.DoctorDto doctor, E_Hospital.BLL.Data.VisitRequestDto visitRequest);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/ReceiveVisitRequest")]
-        System.Threading.Tasks.Task ReceiveVisitRequestAsync(E_Hospital.Client.UserService.DoctorDto doctor, E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        System.Threading.Tasks.Task ReceiveVisitRequestAsync(E_Hospital.BLL.Data.DoctorDto doctor, E_Hospital.BLL.Data.VisitRequestDto visitRequest);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/LogoutDoctor")]
-        void LogoutDoctor(E_Hospital.Client.UserService.DoctorDto doctor);
+        void LogoutDoctor(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/LogoutDoctor")]
-        System.Threading.Tasks.Task LogoutDoctorAsync(E_Hospital.Client.UserService.DoctorDto doctor);
+        System.Threading.Tasks.Task LogoutDoctorAsync(E_Hospital.BLL.Data.DoctorDto doctor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetDoctor", ReplyAction="http://tempuri.org/IDoctorService/GetDoctorResponse")]
-        E_Hospital.Client.UserService.DoctorDto GetDoctor(int userId);
+        E_Hospital.BLL.Data.DoctorDto GetDoctor(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDoctorService/GetDoctor", ReplyAction="http://tempuri.org/IDoctorService/GetDoctorResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.DoctorDto> GetDoctorAsync(int userId);
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.DoctorDto> GetDoctorAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IDoctorServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDoctorService/UpdatePendingRequests")]
-        void UpdatePendingRequests(E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        void UpdatePendingRequests(E_Hospital.BLL.Data.VisitRequestDto visitRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -465,27 +93,27 @@ namespace E_Hospital.Client.UserService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void LogInDoctor(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public void LogInDoctor(E_Hospital.BLL.Data.DoctorDto doctor) {
             base.Channel.LogInDoctor(doctor);
         }
         
-        public System.Threading.Tasks.Task LogInDoctorAsync(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public System.Threading.Tasks.Task LogInDoctorAsync(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.LogInDoctorAsync(doctor);
         }
         
-        public E_Hospital.Client.UserService.VisitRequestDto[] GetScheduleForToday(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public E_Hospital.BLL.Data.VisitRequestDto[] GetScheduleForToday(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.GetScheduleForToday(doctor);
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetScheduleForTodayAsync(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetScheduleForTodayAsync(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.GetScheduleForTodayAsync(doctor);
         }
         
-        public E_Hospital.Client.UserService.VisitRequestDto[] GetPendingRequests(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public E_Hospital.BLL.Data.VisitRequestDto[] GetPendingRequests(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.GetPendingRequests(doctor);
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetPendingRequestsAsync(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetPendingRequestsAsync(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.GetPendingRequestsAsync(doctor);
         }
         
@@ -497,27 +125,27 @@ namespace E_Hospital.Client.UserService {
             return base.Channel.ChangeRequestStateAsync(visitRequestId, isApproved);
         }
         
-        public void ReceiveVisitRequest(E_Hospital.Client.UserService.DoctorDto doctor, E_Hospital.Client.UserService.VisitRequestDto visitRequest) {
+        public void ReceiveVisitRequest(E_Hospital.BLL.Data.DoctorDto doctor, E_Hospital.BLL.Data.VisitRequestDto visitRequest) {
             base.Channel.ReceiveVisitRequest(doctor, visitRequest);
         }
         
-        public System.Threading.Tasks.Task ReceiveVisitRequestAsync(E_Hospital.Client.UserService.DoctorDto doctor, E_Hospital.Client.UserService.VisitRequestDto visitRequest) {
+        public System.Threading.Tasks.Task ReceiveVisitRequestAsync(E_Hospital.BLL.Data.DoctorDto doctor, E_Hospital.BLL.Data.VisitRequestDto visitRequest) {
             return base.Channel.ReceiveVisitRequestAsync(doctor, visitRequest);
         }
         
-        public void LogoutDoctor(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public void LogoutDoctor(E_Hospital.BLL.Data.DoctorDto doctor) {
             base.Channel.LogoutDoctor(doctor);
         }
         
-        public System.Threading.Tasks.Task LogoutDoctorAsync(E_Hospital.Client.UserService.DoctorDto doctor) {
+        public System.Threading.Tasks.Task LogoutDoctorAsync(E_Hospital.BLL.Data.DoctorDto doctor) {
             return base.Channel.LogoutDoctorAsync(doctor);
         }
         
-        public E_Hospital.Client.UserService.DoctorDto GetDoctor(int userId) {
+        public E_Hospital.BLL.Data.DoctorDto GetDoctor(int userId) {
             return base.Channel.GetDoctor(userId);
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.DoctorDto> GetDoctorAsync(int userId) {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.DoctorDto> GetDoctorAsync(int userId) {
             return base.Channel.GetDoctorAsync(userId);
         }
     }
@@ -527,41 +155,41 @@ namespace E_Hospital.Client.UserService {
     public interface IPatientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPatientService/GetVisitRequests", ReplyAction="http://tempuri.org/IPatientService/GetVisitRequestsResponse")]
-        E_Hospital.Client.UserService.VisitRequestDto[] GetVisitRequests(E_Hospital.Client.UserService.PatientDto currentPatient);
+        E_Hospital.BLL.Data.VisitRequestDto[] GetVisitRequests(E_Hospital.BLL.Data.PatientDto currentPatient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPatientService/GetVisitRequests", ReplyAction="http://tempuri.org/IPatientService/GetVisitRequestsResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetVisitRequestsAsync(E_Hospital.Client.UserService.PatientDto currentPatient);
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetVisitRequestsAsync(E_Hospital.BLL.Data.PatientDto currentPatient);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/SendVisitRequest")]
-        void SendVisitRequest(E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        void SendVisitRequest(E_Hospital.BLL.Data.VisitRequestDto visitRequest);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/SendVisitRequest")]
-        System.Threading.Tasks.Task SendVisitRequestAsync(E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        System.Threading.Tasks.Task SendVisitRequestAsync(E_Hospital.BLL.Data.VisitRequestDto visitRequest);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/LogInPatient")]
-        void LogInPatient(E_Hospital.Client.UserService.PatientDto patient);
+        void LogInPatient(E_Hospital.BLL.Data.PatientDto patient);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/LogInPatient")]
-        System.Threading.Tasks.Task LogInPatientAsync(E_Hospital.Client.UserService.PatientDto patient);
+        System.Threading.Tasks.Task LogInPatientAsync(E_Hospital.BLL.Data.PatientDto patient);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/LogOutPatient")]
-        void LogOutPatient(E_Hospital.Client.UserService.PatientDto patient);
+        void LogOutPatient(E_Hospital.BLL.Data.PatientDto patient);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/LogOutPatient")]
-        System.Threading.Tasks.Task LogOutPatientAsync(E_Hospital.Client.UserService.PatientDto patient);
+        System.Threading.Tasks.Task LogOutPatientAsync(E_Hospital.BLL.Data.PatientDto patient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPatientService/GetPatient", ReplyAction="http://tempuri.org/IPatientService/GetPatientResponse")]
-        E_Hospital.Client.UserService.PatientDto GetPatient(int userId);
+        E_Hospital.BLL.Data.PatientDto GetPatient(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPatientService/GetPatient", ReplyAction="http://tempuri.org/IPatientService/GetPatientResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.PatientDto> GetPatientAsync(int userId);
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.PatientDto> GetPatientAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IPatientServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPatientService/UpdateRequestState")]
-        void UpdateRequestState(E_Hospital.Client.UserService.VisitRequestDto visitRequest);
+        void UpdateRequestState(E_Hospital.BLL.Data.VisitRequestDto visitRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -592,43 +220,43 @@ namespace E_Hospital.Client.UserService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public E_Hospital.Client.UserService.VisitRequestDto[] GetVisitRequests(E_Hospital.Client.UserService.PatientDto currentPatient) {
+        public E_Hospital.BLL.Data.VisitRequestDto[] GetVisitRequests(E_Hospital.BLL.Data.PatientDto currentPatient) {
             return base.Channel.GetVisitRequests(currentPatient);
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.VisitRequestDto[]> GetVisitRequestsAsync(E_Hospital.Client.UserService.PatientDto currentPatient) {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.VisitRequestDto[]> GetVisitRequestsAsync(E_Hospital.BLL.Data.PatientDto currentPatient) {
             return base.Channel.GetVisitRequestsAsync(currentPatient);
         }
         
-        public void SendVisitRequest(E_Hospital.Client.UserService.VisitRequestDto visitRequest) {
+        public void SendVisitRequest(E_Hospital.BLL.Data.VisitRequestDto visitRequest) {
             base.Channel.SendVisitRequest(visitRequest);
         }
         
-        public System.Threading.Tasks.Task SendVisitRequestAsync(E_Hospital.Client.UserService.VisitRequestDto visitRequest) {
+        public System.Threading.Tasks.Task SendVisitRequestAsync(E_Hospital.BLL.Data.VisitRequestDto visitRequest) {
             return base.Channel.SendVisitRequestAsync(visitRequest);
         }
         
-        public void LogInPatient(E_Hospital.Client.UserService.PatientDto patient) {
+        public void LogInPatient(E_Hospital.BLL.Data.PatientDto patient) {
             base.Channel.LogInPatient(patient);
         }
         
-        public System.Threading.Tasks.Task LogInPatientAsync(E_Hospital.Client.UserService.PatientDto patient) {
+        public System.Threading.Tasks.Task LogInPatientAsync(E_Hospital.BLL.Data.PatientDto patient) {
             return base.Channel.LogInPatientAsync(patient);
         }
         
-        public void LogOutPatient(E_Hospital.Client.UserService.PatientDto patient) {
+        public void LogOutPatient(E_Hospital.BLL.Data.PatientDto patient) {
             base.Channel.LogOutPatient(patient);
         }
         
-        public System.Threading.Tasks.Task LogOutPatientAsync(E_Hospital.Client.UserService.PatientDto patient) {
+        public System.Threading.Tasks.Task LogOutPatientAsync(E_Hospital.BLL.Data.PatientDto patient) {
             return base.Channel.LogOutPatientAsync(patient);
         }
         
-        public E_Hospital.Client.UserService.PatientDto GetPatient(int userId) {
+        public E_Hospital.BLL.Data.PatientDto GetPatient(int userId) {
             return base.Channel.GetPatient(userId);
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.PatientDto> GetPatientAsync(int userId) {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.PatientDto> GetPatientAsync(int userId) {
             return base.Channel.GetPatientAsync(userId);
         }
     }
@@ -638,10 +266,16 @@ namespace E_Hospital.Client.UserService {
     public interface ICommonService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetSpecializations", ReplyAction="http://tempuri.org/ICommonService/GetSpecializationsResponse")]
-        E_Hospital.Client.UserService.SpecializationDto[] GetSpecializations();
+        E_Hospital.BLL.Data.SpecializationDto[] GetSpecializations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetSpecializations", ReplyAction="http://tempuri.org/ICommonService/GetSpecializationsResponse")]
-        System.Threading.Tasks.Task<E_Hospital.Client.UserService.SpecializationDto[]> GetSpecializationsAsync();
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.SpecializationDto[]> GetSpecializationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetDoctors", ReplyAction="http://tempuri.org/ICommonService/GetDoctorsResponse")]
+        E_Hospital.BLL.Data.DoctorDto[] GetDoctors();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommonService/GetDoctors", ReplyAction="http://tempuri.org/ICommonService/GetDoctorsResponse")]
+        System.Threading.Tasks.Task<E_Hospital.BLL.Data.DoctorDto[]> GetDoctorsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -671,12 +305,20 @@ namespace E_Hospital.Client.UserService {
                 base(binding, remoteAddress) {
         }
         
-        public E_Hospital.Client.UserService.SpecializationDto[] GetSpecializations() {
+        public E_Hospital.BLL.Data.SpecializationDto[] GetSpecializations() {
             return base.Channel.GetSpecializations();
         }
         
-        public System.Threading.Tasks.Task<E_Hospital.Client.UserService.SpecializationDto[]> GetSpecializationsAsync() {
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.SpecializationDto[]> GetSpecializationsAsync() {
             return base.Channel.GetSpecializationsAsync();
+        }
+        
+        public E_Hospital.BLL.Data.DoctorDto[] GetDoctors() {
+            return base.Channel.GetDoctors();
+        }
+        
+        public System.Threading.Tasks.Task<E_Hospital.BLL.Data.DoctorDto[]> GetDoctorsAsync() {
+            return base.Channel.GetDoctorsAsync();
         }
     }
 }
